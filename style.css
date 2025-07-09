@@ -18,7 +18,7 @@ body {
   position: relative;
   background-color: #b5aaae;
   color: #fffdff;
-  width: 45%;
+  width: 23%;
   height: 100vh;
   padding: 2rem 1.5rem;
   display: flex;
@@ -147,5 +147,103 @@ body {
 .top-bar {
   display: flex;
   flex-direction: row;
-  margin-left: 500px;
+}
+
+main {
+  width: 77%;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  position: static; /* or just remove the position entirely */
+  display: flex;
+  align-items: center;
+}
+
+.circles {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.custom-tooltip {
+  visibility: hidden;
+  background: linear-gradient(145deg, #2c1a2c, #5e3b5e);
+  color: #fffdff;
+  padding: 8px 14px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.35);
+  position: absolute;
+  z-index: 9999;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
+  backdrop-filter: blur(3px);
+}
+
+.tooltip-container:hover .custom-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(5px);
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: visible; /* 👈 make sure nothing is hidden */
+  position: relative; /* 👈 allow tooltips to position absolutely inside */
+  z-index: 0;
+  padding-right: 15px;
+}
+
+.circles {
+  position: relative; /* 👈 THIS IS IMPORTANT */
+  overflow: visible;
+}
+
+.custom-tooltip::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #2c1a2c transparent;
+}
+
+.tooltip-container img:hover {
+  box-shadow: 0 0 10px rgba(94, 59, 94, 0.6);
+  transform: scale(1.05);
+}
+
+.right-edge .custom-tooltip {
+  text-align: center;
 }
